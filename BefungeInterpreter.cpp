@@ -226,7 +226,7 @@ private:
 }; int main() {
 	srand(time(0));
 	Yorumlayici yorumlayici;
-	cout << "Enter a .bf file to run it on Befunge Interpreter: (note: This is not full Befunge-93. For code in full Befunge : tio.run/#befunge)" << endl;
+	cout << "Enter a .bf file to run it on Befunge Interpreter: (note: I've done most of this interpreter but this is not fully Befunge-93. For code in full Befunge : tio.run/#befunge)" << endl;
 	string koddosyasi;
 	getline(cin,koddosyasi);
 	ifstream file(koddosyasi);
