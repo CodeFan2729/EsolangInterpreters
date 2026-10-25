@@ -6,7 +6,7 @@
 using namespace std;
 int main() {
 	string file;
-	cout << "Enter a .bf file to run it in Brainf**k interpreter: (note: file's extension must be .bf)" << endl;
+	cout << "Enter a .bf file to run it in Brainf**k interpreter: (note: file's extension must be .bf, and this is full brainf**k))" << endl;
 	getline(cin, file);
 	vector<unsigned char> memorytape(30000,0);
 	int ptr = 0;
