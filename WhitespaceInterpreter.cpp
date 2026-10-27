@@ -18,7 +18,7 @@ long int BinaryToInt(string binary) {
 	for (char ch : binary) {
 		if (ch != '0' && ch != '1') hatali = true;
 	} if (hatali) {
-		cout << "HATA: BINARY 0 VE 1'LERDEN OLUSMUYOR!" << endl;
+		cout << "ERROR: BINARY DOESN'T FROM JUST 0 AND 1" << endl;
 	} else {
 		vector<long int> binaryvectoru;
 		binaryvectoru.push_back(1);
