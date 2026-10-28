@@ -154,7 +154,7 @@ public:
 						int sayi = stack.back();
 						stack.pop_back();
 						if (sayi == 0) mod = "sag";
-						else if (sayi > 0) mod = "sol";
+						else if (sayi != 0) mod = "sol";
 					} break;
 				case '#':
 					if (!sm) {
