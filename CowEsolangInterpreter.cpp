@@ -30,7 +30,7 @@ public:
 				memory[pointer] = sayi;
 			} else if (s == "OOO") memory[pointer] = 0;
 			else if (s == "MMM") {
-				if (memory[pointer] == 0) {
+				if (memory[pointer] != 0) {
 					pano = memory[pointer];
 					memory[pointer] = 0;
 				} else {
