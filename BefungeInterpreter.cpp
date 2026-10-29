@@ -234,8 +234,7 @@ private:
 }; int main() {
 	srand(time(0));
 	Yorumlayici yorumlayici;
-	cout << "Enter a .bf file to run it on Befunge Interpreter: (note: I've done most of this interpreter but this is not fully Befunge-93. For code in full Befunge : tio.run/#befunge)" << endl;
-	string koddosyasi;
+	cout << "Enter a .bf file to run it on Befunge Interpreter: (note: I've finally done full Befunge-93)" << endl;
 	getline(cin,koddosyasi);
 	ifstream file(koddosyasi);
 	if (!file.is_open()) { cout << "Error: File not found." << endl; exit(0); }
