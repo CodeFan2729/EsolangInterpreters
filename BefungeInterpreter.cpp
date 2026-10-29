@@ -203,6 +203,16 @@ public:
 						else mod = "yukari";
 						stack.pop_back();
 					} break;
+				case '`':
+					if (!sm) {
+						if (stack.size() < 2 || stack.empty()) { while (stack.size() != 2) stack.push_back(0); }
+						int xx = stack.back();
+						stack.pop_back();
+						int yy = stack.back();
+						stack.pop_back();
+						if (yy > xx) stack.push_back(1);
+						else if (xx >= yy) stack.push_back(0);
+					} break;
 			} if (c == '@' && !sm) break;
 			if (c >= '0' && c <= '9') {if (!sm) stack.push_back(c-'0'); };
 			HareketEt();
