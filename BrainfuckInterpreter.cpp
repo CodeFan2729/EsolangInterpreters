@@ -30,7 +30,7 @@ int main() {
 			switch (c) {
 				case '+':memorytape[ptr]++; break;
 				case '-':memorytape[ptr]--; break;
-				case '>': ptr++; break;
+				case '>': if (ptr >= memorytape.size()) memorytape.push_back(0); ptr++; break;
 				case '<': ptr--; break;
 				case '.': cout << char(memorytape[ptr]); break;
 				case ',': memorytape[ptr] = cin.get(); break;
