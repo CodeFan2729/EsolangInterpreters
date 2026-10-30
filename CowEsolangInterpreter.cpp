@@ -4,6 +4,7 @@
 #include <fstream>
 #include <windows.h>
 using namespace std;
+vector<int> memory(30000,0);
 class COW_Interpreter {
 public:
 	void RunCode(string code) {
@@ -14,7 +15,7 @@ public:
 			string s = moocodes[pc];
 			if (s == "MoO") memory[pointer]++;
 			else if (s == "MOo") memory[pointer]--;
-			else if (s == "moO") pointer++;
+			else if (s == "moO") { if (pointer >= memory.size()) memory.push_back(0); pointer++; }
 			else if (s == "mOo") pointer--;
 			else if (s == "Moo") {
 				if (memory[pointer] != 0) cout << char(memory[pointer]);
@@ -108,7 +109,7 @@ public:
 		}
 	} 
 private:
-	int memory[30000];
+	
 	vector<string> moocodes;
 	int pointer = 0;
 	int pc = 0;
