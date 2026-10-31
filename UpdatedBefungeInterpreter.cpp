@@ -233,6 +233,7 @@ private:
 	}
 }; int main() {
 	srand(time(0));
+	string koddosyasi;
 	Yorumlayici yorumlayici;
 	cout << "Enter a .bf file to run it on Befunge Interpreter: (note: I've finally done full Befunge-93)" << endl;
 	getline(cin,koddosyasi);
