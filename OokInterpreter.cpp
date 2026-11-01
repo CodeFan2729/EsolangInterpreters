@@ -39,7 +39,7 @@ int main() {
 		if (s == "Ook. Ook.") serid[ptr]++;
 		else if (s == "Ook! Ook!") serid[ptr]--;
 		else if (s == "Ook. Ook?") { if (serid.size() <= ptr) serid.push_back(0); ptr++; }
-		else if (s == "Ook? Ook.") ptr--;
+		else if (s == "Ook? Ook.") if (ptr > 0) { ptr--; }
 		else if (s == "Ook! Ook.") cout << serid[ptr];
 		else if (s == "Ook. Ook!") serid[ptr] = cin.get();
 		else if (s == "Ook! Ook?") {
