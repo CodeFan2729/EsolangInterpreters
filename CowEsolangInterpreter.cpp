@@ -15,7 +15,7 @@ public:
 			string s = moocodes[pc];
 			if (s == "MoO") memory[pointer]++;
 			else if (s == "MOo") memory[pointer]--;
-			else if (s == "moO") { if (pointer >= memory.size()) memory.push_back(0); pointer++; }
+			else if (s == "moO") { pointer++; if (pointer >= memory.size()) memory.push_back(0); }
 			else if (s == "mOo") { if (pointer > 0) pointer--; }
 			else if (s == "Moo") {
 				if (memory[pointer] != 0) cout << char(memory[pointer]);
