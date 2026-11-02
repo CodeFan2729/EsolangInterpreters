@@ -31,8 +31,9 @@ int main() {
 				case '+':memorytape[ptr]++; break;
 				case '-':memorytape[ptr]--; break;
 				case '>':
+					ptr++;
 					if (ptr >= memorytape.size()) memorytape.push_back(0);
-					ptr++; break;
+					break;
 				case '<': if (ptr > 0) { ptr--; } break;
 				case '.': cout << char(memorytape[ptr]); break;
 				case ',': memorytape[ptr] = cin.get(); break;
