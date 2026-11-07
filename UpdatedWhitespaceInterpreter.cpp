@@ -25,7 +25,7 @@ int BinaryToInt(string binary) {
 }
 int main() {
 	stack<int> stak;
-	cout << "Enter a .ws file to run it on Whitespace Interpreter: (I made most of it but this is not fully Whitespace Interpreter.)" << endl;
+	cout << "Enter a .ws file to run it on Whitespace Interpreter: (note: I made most of it but this is not fully Whitespace Interpreter.)" << endl;
 	string fle;
 	getline(cin, fle);
 	ifstream rf(fle);
