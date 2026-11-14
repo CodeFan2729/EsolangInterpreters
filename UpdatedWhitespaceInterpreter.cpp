@@ -2,7 +2,9 @@
 #include <stack>
 #include <fstream>
 #include <windows.h>
+#include <map>
 #include <sstream>
+#include <vector>
 using namespace std;
 int BinaryToInt(string binary) {
 	int buffer = 0;
@@ -28,6 +30,7 @@ int main() {
 	cout << "Enter a .ws file to run it on Whitespace Interpreter: (note: I made most of it but this is not fully Whitespace Interpreter.)" << endl;
 	string fle;
 	getline(cin, fle);
+	map<int,int> index;
 	ifstream rf(fle);
 	if (!rf.is_open()) {
 		cout << "Error: File not found." << endl;
@@ -103,13 +106,13 @@ int main() {
 				}
 				ip += 3;
 			} else {
+				string devam = "";
+				devam += code[ip+1];
+				devam += code[ip+2];
 				if (c == ' ') {
-					string devam = "";
-					devam += code[ip+1];
-					devam += code[ip+2];
-					string substring = code.substr(ip+3);
-					substring = substring.substr(0, substring.find('\n'));
 					if (devam == "  ") {
+						string substring = code.substr(ip+3);
+						substring = substring.substr(0, substring.find('\n'));
 						string binarycode = "";
 						for (char ch : substring) {
 							if (ch == '\t') binarycode += '1';
@@ -118,6 +121,8 @@ int main() {
 						ip += 2;
 						ip += substring.length();
 					} else if (devam == " \t") {
+						string substring = code.substr(ip+3);
+						substring = substring.substr(0, substring.find('\n'));
 						string binarycode = "";
 						for (char ch : substring) {
 							if (ch == '\t') binarycode += '1';
@@ -138,6 +143,52 @@ int main() {
 						stak.push(sayi2);
 						ip += 2;
 					} else if (devam == "\n\n") {stak.pop(); ip += 2;}
+					else if (devam == "\t\n") {
+						string substring = code.substr(ip+3);
+						substring = substring.substr(0, substring.find('\n'));
+						int enustu = stak.top();
+						stak.pop();
+						string binary = "";
+						for (char ch : substring) {
+							if (ch == '\t') binary += '1';
+							else if (ch == ' ') binary += '0';
+						} int sayi = BinaryToInt(binary);
+						for (int i = 0; i < sayi; i++) {
+							stak.pop();
+						} stak.push(enustu);
+						ip += substring.length();
+						ip += 2;
+					} else if (devam == "\t ") {
+						string substring = code.substr(ip+3);
+						substring = substring.substr(0, substring.find('\n'));
+						string binary = "";
+						for (char ch : substring) {
+							if (ch == '\t') binary += '1';
+							else if (ch == ' ') binary += '0';
+						} vector<int> liste;
+						int sayi = BinaryToInt(binary);
+						for (int i = 0; i < sayi; i++) {
+							liste.push_back(stak.top());
+							stak.pop();
+						} int alincak = stak.top();
+						for (int i = liste.size()-1; i > -1; i--) {
+							stak.push(liste[i]);
+						} stak.push(alincak);
+						ip += 2;
+						ip += substring.length();
+					}
+				} else if (c == '\t') {
+					if (devam == "\t ") {
+						int sayi = stak.top();
+						stak.pop();
+						int sayi2 = stak.top();
+						stak.pop();
+						index[sayi2] = sayi;
+					} else if (devam == "\t\t") {
+						int ust = stak.top();
+						stak.pop();
+						stak.push(index[ust]);
+					} ip += 2;
 				}
 			}
 			ip++;
