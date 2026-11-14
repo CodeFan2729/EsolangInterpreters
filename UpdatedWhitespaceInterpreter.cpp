@@ -134,8 +134,8 @@ int main() {
 						stak.pop();
 						int sayi2 = stak.top();
 						stak.pop();
-						stak.push(sayi2);
 						stak.push(sayi);
+						stak.push(sayi2);
 						ip += 2;
 					} else if (devam == "\n\n") {stak.pop(); ip += 2;}
 				}
