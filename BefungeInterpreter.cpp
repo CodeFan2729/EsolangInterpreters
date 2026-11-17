@@ -51,7 +51,7 @@ public:
 				case '.':
 					if (!sm) {
 						if (!stack.empty()) {
-							cout << stack.back();
+							cout << stack.back() << " ";
 							stack.pop_back();
 						}
 					}
@@ -162,27 +162,23 @@ public:
 					} break;
 				case 'p':
 					if (!sm) {
-						if (stack.empty() or stack.size() < 3) gridmatris[0][0] = 0;
-						else {
-							int yy = stack.back();
-							stack.pop_back();
-							int xx = stack.back();
-							stack.pop_back();
-							int veri = stack.back();
-							stack.pop_back();
-							gridmatris[yy][xx] = veri;
-						}
+						while (stack.size() < 3) stack.push_back(0);
+						int yy = stack.back();
+						stack.pop_back();
+						int xx = stack.back();
+						stack.pop_back();
+						int veri = stack.back();
+						stack.pop_back();
+						kodlar[yy][xx] = char(veri);
 					} break;
 				case 'g':
 					if (!sm) {
-						if (stack.empty() || stack.size() < 2) stack.push_back(gridmatris[0][0]);
-						else {
-							int yy = stack.back();
-							stack.pop_back();
-							int xx = stack.back();
-							stack.pop_back();
-							stack.push_back(gridmatris[yy][xx]);
-						}
+						while (stack.size() < 2) stack.push_back(0);
+						int yy = stack.back();
+						stack.pop_back();
+						int xx = stack.back();
+						stack.pop_back();
+						stack.push_back(kodlar[yy][xx]);
 					} break;
 				case '\\':
 					if (!sm) {
@@ -213,6 +209,14 @@ public:
 						if (yy > xx) stack.push_back(1);
 						else if (xx >= yy) stack.push_back(0);
 					} break;
+				case '!':
+					if (!sm) {
+						if (stack.empty()) stack.push_back(0);
+						int deger = stack.back();
+						stack.pop_back();
+						if (deger == 0) stack.push_back(1);
+						else stack.push_back(0);
+					} break;
 			} if (c == '@' && !sm) break;
 			if (c >= '0' && c <= '9') {if (!sm) stack.push_back(c-'0'); };
 			HareketEt();
@@ -226,10 +230,10 @@ private:
 	vector<string> kodlar;
 	string mod = "sag";
 	void HareketEt() {
-		if (mod == "sag") x++;
-		else if (mod == "sol") x--;
-		else if (mod == "yukari") y--;
-		else if (mod == "asagi") y++;
+		if (mod == "sag") x = (x+1) % 80;
+		else if (mod == "sol") x = ((x-1)+80) % 80;
+		else if (mod == "yukari") y = ((y-1)+25) % 25;
+		else if (mod == "asagi") y = (y+1) % 25;
 	}
 }; int main() {
 	srand(time(0));
