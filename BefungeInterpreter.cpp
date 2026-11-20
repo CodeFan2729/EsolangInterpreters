@@ -13,6 +13,10 @@ public:
 		stringstream parcalayici(kod);
 		string ayrilmisparca;
 		while (getline(parcalayici,ayrilmisparca,'\n')) kodlar.push_back(ayrilmisparca);
+		kodlar.back().resize(80,' ');
+		string a = "";
+		for (int j = 0; j < 80; j++) a += ' ';
+		kodlar.resize(25,a);
 		while (true) {
 			char c = kodlar[y][x];
 			switch (c) {
@@ -163,9 +167,9 @@ public:
 				case 'p':
 					if (!sm) {
 						while (stack.size() < 3) stack.push_back(0);
-						int yy = stack.back();
+						int yy = stack.back() % 25;
 						stack.pop_back();
-						int xx = stack.back();
+						int xx = stack.back() % 80;
 						stack.pop_back();
 						int veri = stack.back();
 						stack.pop_back();
@@ -174,9 +178,9 @@ public:
 				case 'g':
 					if (!sm) {
 						while (stack.size() < 2) stack.push_back(0);
-						int yy = stack.back();
+						int yy = stack.back() % 25;
 						stack.pop_back();
-						int xx = stack.back();
+						int xx = stack.back() % 80;
 						stack.pop_back();
 						stack.push_back(kodlar[yy][xx]);
 					} break;
